@@ -1,7 +1,13 @@
 import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
-
+import {
+	ClerkProvider,
+	SignInButton,
+	SignedIn,
+	SignedOut,
+	UserButton,
+} from "@clerk/nextjs";
 export default function Navbar() {
 	return (
 		<div className="sticky top-0 z-30 border-b bg-background px-4 sm:px-6">
@@ -20,7 +26,15 @@ export default function Navbar() {
 						</Link>
 					</nav>
 				</div>
-				<Button variant={"outline"}>login</Button>
+
+				<SignedOut>
+					<SignInButton>
+						<Button variant={"outline"}>Sign In</Button>
+					</SignInButton>
+				</SignedOut>
+				<SignedIn>
+					<UserButton />
+				</SignedIn>
 			</div>
 		</div>
 	);
